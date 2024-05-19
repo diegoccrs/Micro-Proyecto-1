@@ -1,2 +1,6 @@
 # Micro-Proyecto-1
-Micro Proyecto 1 (Juego de Ahorcado)
+Juego de Ahorcado
+
+Integrantes:
+
+Diego Cáceres y Andres Rangel 
