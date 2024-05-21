@@ -1,0 +1,20 @@
+header{
+    font-family:sans-serif;
+      height: 3em;
+      color:rgb(255, 0, 153);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  body{
+    background-image: url(../images/negro2.avif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  
+  .pantalla{
+      display: flex;
+      justify-content: center;
+  }
