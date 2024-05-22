@@ -40,7 +40,6 @@ header{
     text-align: center;
   }
   
-  /* CSS */
   .button-71 {
     background-color: #d00087;
     border: 0; 
@@ -102,7 +101,7 @@ header{
   height: 102px;
   left: 0px;
   top: 788px;
-  background: #FFFFFF;
+  background: #0e0d0d;
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -121,7 +120,7 @@ header{
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  color: #464646;
+  color: #faf4f4;
   flex: none;
   order: 0;
   flex-grow: 0;
