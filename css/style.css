@@ -18,3 +18,112 @@ header{
       display: flex;
       justify-content: center;
   }
+
+  #input-text{
+    width: 100%;
+    max-width: 600px;
+    padding: 50px 30px;
+    margin: 10px auto 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input[type=text] {
+    width: 40%;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif; 
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* CSS */
+  .button-71 {
+    background-color: #d00087;
+    border: 0; 
+    border-radius: 56px; 
+    color: #fff;  
+    cursor: pointer;  
+    display: inline-block; 
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font-size: 14px;  
+    font-weight: 600;  
+    outline: 0;    
+    padding: 16px 16px;  
+    position: relative;  
+    text-align: center;  
+    text-decoration: none;  
+    transition: all .3s;  
+    user-select: none;  
+    -webkit-user-select: none;  
+    touch-action: manipulation;  
+  }
+  
+  .button-71:before {
+    background-color: initial;
+    background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+    border-radius: 125px;
+    content: "";
+    height: 50%;
+    left: 4%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    transition: all .3s;
+    width: 92%;
+  }
+  
+  .button-71:hover {
+    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
+  }
+  
+  @media (min-width: 768px) {
+    .button-71 {
+      padding: 16px 48px;
+    }
+  }
+  
+  #hide-me {
+    display:block;
+  }
+  
+  .pie-pagina{
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  position: static;
+  width: 1440px;
+  height: 102px;
+  left: 0px;
+  top: 788px;
+  background: #FFFFFF;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 0px;
+  }
+  
+  .pie-pagina span{
+    position: static;
+  width: 270px;
+  height: 38px;
+  left: 605.5px;
+  top: 32px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #464646;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+  }
