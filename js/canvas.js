@@ -1,10 +1,11 @@
 var pantalla = document.querySelector("canvas");   //Esta línea declara una variable llamada pantalla y le asigna el primer elemento HTML que coincida con el selector CSS "canvas". El elemento canvas en HTML define un área rectangular donde se pueden dibujar gráficos utilizando JavaScript. En resumen, esta línea encuentra el elemento <canvas> en la página web y lo almacena en la variable pantalla.
 var pincel = pantalla.getContext("2d");   /*Esta línea declara otra variable llamada pincel y le asigna el contexto de dibujo 2D del elemento pantalla. El contexto de dibujo proporciona métodos para dibujar formas, líneas, texto y otros elementos gráficos en el lienzo. En resumen, esta línea recupera el contexto de dibujo 2D asociado con el elemento canvas y lo almacena en la variable pincel.*/ 
+ 
 
 pincel.lineWidth = 3;  //lineWidth: Esta es una propiedad del objeto pincel que controla el grosor de las líneas dibujadas con ese pincel.
 
 function drawBase(){
-  pincel.fillStyle = "lightgrey";
+  pincel.fillStyle = "green";
   pincel.fillRect (0,0,1200,800);
 
 }
@@ -91,7 +92,7 @@ function drawBase_1(){
   function drawLetraCorrecta(palabraSecreta, letra){
     var separacion = 450;
     pincel.font = "30px Comic Sans MS";
-    pincel.fillStyle = "green";
+    pincel.fillStyle = "white";
 
     for(i=0; i < palabraSecreta.length; i++){
       if (palabraSecreta[i] == letra){
@@ -108,7 +109,7 @@ function drawBase_1(){
   function drawLetraIncorrecta(arrayLetrasIncorrectas){
     var separacion = 550;
     pincel.font = "25px Comic Sans MS";
-    pincel.fillStyle = "red";
+    pincel.fillStyle = "white";
 
     
 
@@ -119,7 +120,7 @@ function drawBase_1(){
     }
     pincel.stroke();
     
-
+    
     if (arrayLetrasIncorrectas.length == 1){
       drawBase_1()
     }
@@ -161,37 +162,33 @@ function drawBase_1(){
     if(texto == "Fin del Juego!"){
       pincel.fillStyle ="red";
     }else{
-      pincel.fillStyle = "green";
+      pincel.fillStyle = "white";
     }
     pincel.fillText(texto,520,150);
     pincel.stroke();
   }
 
-  function resizeCanvas(){
-    var canvas = document.getElementById('canvas');
+  function resizeCanvas() {
+    var canvas = document.getElementById('id_pantalla');
 
     // Add an event listener to the window's resize event
     window.addEventListener('resize', resizeCanvas, false);
+    // Make the canvas fill its parent container
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    
+    // Set the internal size to match
+    //canvas.width  = canvas.offsetWidth;
+    //canvas.height = canvas.offsetHeight;
+    }
 
-    // Call the function once to ensure the canvas is the correct size when the page loads
-    resizeCanvas();
 
-    function resizeCanvas() {
-      // Make the canvas fill its parent container
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
-      
-      // Set the internal size to match
-      canvas.width  = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      }
 
+
+
+function main(){
+  drawBase();
+  resizeCanvas();
 }
-
-
-  function main(){
-    drawBase();
-    resizeCanvas();
-  }
 
 main();

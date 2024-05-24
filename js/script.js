@@ -1,3 +1,8 @@
+var rachaNum = 0;
+var puntuacionNum = 0;
+var intentoNum = 1
+
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
@@ -83,7 +88,7 @@ function validarTexto (texto){
 }
 
 
-
+//secuencia principal
 document.addEventListener('keydown', function(event){
   var keyName = event.key;
   keyName = keyName.toUpperCase();
@@ -107,18 +112,72 @@ document.addEventListener('keydown', function(event){
       if (finJuego (arrayLetrasIncorrectas.length)){
           drawFinJuego("Fin del Juego!");
           document.getElementById("input-text").style.display = "block";
+          document.getElementById("btn-iniciar").textContent = "INICIAR JUEGO";
+          puntuacionNum = 0;
+          rachaNum = 0;
+
           finalJuego = true;
+
+          //añadir a la tabla
+          appendRow();
+          intentoNum++;
       }
 
-      if (ganador(palabraRandom,arrayLetrasCorrectas) && 
-          !finalJuego){
-              drawFinJuego("Ganaste, Felicidades");
-              document.getElementById("input-text").style.display = "block";
-              finalJuego = true;
-          }
+      if (ganador(palabraRandom,arrayLetrasCorrectas) && !finalJuego){
+            drawFinJuego("Ganaste, Felicidades");
+            document.getElementById("input-text").style.display = "block";
+            finalJuego = true;
+
+            //racha y puntaje
+            definirPuntaje();
+            }
+      definirIntento();      
   }
       
 });
+
+function appendRow() {
+    // Get the table body
+    var tbody = document.querySelector(".stats-table table tbody");
+  
+    // Create a new row and cells
+    var row = document.createElement("tr");
+    var numberCell = document.createElement("td");
+    var scoreCell = document.createElement("td");
+    var winStreakCell = document.createElement("td");
+  
+    // Set the cell text
+    numberCell.textContent = intentoNum;
+    scoreCell.textContent = puntuacionNum;
+    winStreakCell.textContent = rachaNum;
+  
+    // Append the cells to the row
+    row.appendChild(numberCell);
+    row.appendChild(scoreCell);
+    row.appendChild(winStreakCell);
+  
+    // Append the row to the table body
+    tbody.appendChild(row);
+  }
+
+function definirPuntaje(){
+    var racha = document.querySelector("#racha");
+    var puntuacion = document.querySelector("#puntuacion");
+    
+
+    rachaNum++;
+    puntuacionNum = puntuacionNum + (10-arrayLetrasIncorrectas.length)*10;
+
+    racha.textContent = "Racha: " + rachaNum;
+    puntuacion.textContent = "Puntuación: " + puntuacionNum;
+}
+
+function definirIntento(){
+    var intento = document.querySelector("#intentos");
+    intento.textContent = "INTENTOS: " + (9-arrayLetrasIncorrectas.length);
+    console.log(9-arrayLetrasIncorrectas.length);
+}
+
 
 document.addEventListener("DOMContentLoaded", function () { 
   document.getElementById("input-text").style.display = "block";
@@ -133,6 +192,7 @@ iniciarJuego.addEventListener("click", function (evt){
   finalJuego = false;
 
   document.getElementById("input-text").style.display = "none";
+  iniciarJuego.textContent = "CONTINUAR";
   palabraRandom = listaPalabras(basePalabras);
   console.log(palabraRandom);
 
@@ -152,6 +212,7 @@ iniciarJuego.addEventListener("click", function (evt){
   }
 })();
 
+//BOTON AGREGAR
 var btnAgregar = document.querySelector("#btn-agregar");
 btnAgregar.addEventListener("click", function(evt){
   evt.preventDefault();
@@ -159,7 +220,9 @@ btnAgregar.addEventListener("click", function(evt){
   botonInicioPresionado = false;
   var agregarPalabra = document.querySelector("#agregar-palabra");
   var palabraNueva = agregarPalabra.value.toUpperCase();
+ 
   
+
   if (validarTexto(palabraNueva)){
       for(j=0; j < basePalabras.length; j++){
           if (basePalabras[j] == palabraNueva){
@@ -182,3 +245,19 @@ btnAgregar.addEventListener("click", function(evt){
   
   agregarPalabra.value = "";
 })
+
+//BOTON REINICIAR
+let btnReiniciar = document.getElementById("btn-reiniciar");
+
+btnReiniciar.addEventListener("click", function() {
+// Get the "btn-iniciar" button
+    let btnIniciar = document.getElementById("btn-iniciar");
+
+    // Set the text of the "btn-iniciar" button
+    btnIniciar.textContent = "INICIAR JUEGO";
+    document.getElementById("input-text").style.display = "block";
+    // Set rachaNum and puntuacionNum to 0
+    rachaNum = 0;
+    puntuacionNum = 0;
+});
+

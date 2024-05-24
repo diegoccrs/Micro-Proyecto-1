@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>MICRO PROYECTO 1 - JUEGO AHORCADO</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 	</head>
@@ -11,7 +11,7 @@
 	<body>
 		<header>
 			<div class="container">
-				<h1 class="titulo">AHORCADO</h1>
+				<h1>AHORCADO</h1>
 			</div>
 		</header>	
 
@@ -20,25 +20,54 @@
 				<div>
 					<button id="btn-iniciar" class="button-71" role="button">INICIAR JUEGO</button>
 				</div>
+				<div id="input-text">
+					<button id="btn-agregar" class="button-71" role="button">AGREGAR PALABRA</button>
+					<input type="text" id="agregar-palabra" placeholder="Escriba una nueva palabra">
+				</div>
+				<div>
+					<button id="btn-reiniciar" class="button-71" role="button">REINICIAR</button>
+
+				</div>
 			</div>
 
             
-			<div id="input-text">
-				<button id="btn-agregar" class="button-71" role="button">AGREGAR PALABRA</button>
-				<input type="text" id="agregar-palabra" placeholder="Escriba una nueva palabra">
-			</div>
 			<section class="scoreboard">
-			
-					<h2>TABLA</h2>
+				<div class="forma">
+					<P id="intentos">INTENTOS: 0</P>
+
+				</div>
+				<div class="forma">
 					<p id="puntuacion">PUNTUACIÓN: 0</p>
+
+				</div>
+				<div class="forma">
 					<p id="racha">RACHA: 0</p>
-				
-
+				</div>
 			  </section>
-
-			<div class="pantalla">
-                <canvas width="1200px" height="800px"></canvas>
-            </div>
+			  <section class="contenedor_pantalla">
+				  <div class="pantalla" >
+					  <canvas width="900%" height="600%" id="id_pantalla"></canvas>
+				  </div>
+			  </section>
+			  <section class="stats-table">
+				<div class="forma">
+					<table>
+					  <caption>ESTADISTICAS</caption>
+					  <thead>
+						<tr>
+						  <th>NUMERO</th>
+						  <th>PUNTUACIÓN</th>
+						  <th>RACHA</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+						  
+						</tr>
+					  </tbody>
+					</table>
+				</div>
+			  </section>
 		</main>
 
 		<footer>
