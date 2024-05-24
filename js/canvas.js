@@ -7,6 +7,9 @@ function drawBase(){
   pincel.fillStyle = "lightgrey";
   pincel.fillRect (0,0,1200,800);
 
+}
+
+function drawBase_1(){
   pincel.beginPath();
   pincel.moveTo(150,400);
   pincel.lineWidth = 3;
@@ -107,6 +110,8 @@ function drawBase(){
     pincel.font = "25px Comic Sans MS";
     pincel.fillStyle = "red";
 
+    
+
     for(g=0; g < arrayLetrasIncorrectas.length; g++){
       pincel.fillText(arrayLetrasIncorrectas[g],separacion,300);
       separacion = separacion + 30;
@@ -114,28 +119,38 @@ function drawBase(){
     }
     pincel.stroke();
     
+
     if (arrayLetrasIncorrectas.length == 1){
-      drawColumna();
+      drawBase_1()
     }
     if (arrayLetrasIncorrectas.length == 2){
-      drawSoga();
+      drawColumna();
     }
     if (arrayLetrasIncorrectas.length == 3){
-      drawCabeza();
+      drawSoga();
     }
     if (arrayLetrasIncorrectas.length == 4){
-      drawTorso();
+      drawCabeza();
     }
     if (arrayLetrasIncorrectas.length == 5){
-      drawPiernaDer();
+      drawTorso();
+      
     }
     if (arrayLetrasIncorrectas.length == 6){
-      drawPiernaIzq();
+      drawPiernaDer();
+      
     }
     if (arrayLetrasIncorrectas.length == 7){
-      drawBrazoDer();
+
+      drawPiernaIzq();
+      
     }
     if (arrayLetrasIncorrectas.length == 8){
+      drawBrazoDer();
+      
+    }
+    if (arrayLetrasIncorrectas.length == 9){
+      
       drawBrazoIzq();
     }
   }
@@ -152,4 +167,31 @@ function drawBase(){
     pincel.stroke();
   }
 
-  drawBase();
+  function resizeCanvas(){
+    var canvas = document.getElementById('canvas');
+
+    // Add an event listener to the window's resize event
+    window.addEventListener('resize', resizeCanvas, false);
+
+    // Call the function once to ensure the canvas is the correct size when the page loads
+    resizeCanvas();
+
+    function resizeCanvas() {
+      // Make the canvas fill its parent container
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      
+      // Set the internal size to match
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      }
+
+}
+
+
+  function main(){
+    drawBase();
+    resizeCanvas();
+  }
+
+main();

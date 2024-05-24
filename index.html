@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<title>MICRO PROYECTO 1 - JUEGO AHORCADO</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
 	</head>
 
 	<body>
@@ -12,19 +13,31 @@
 			<div class="container">
 				<h1 class="titulo">AHORCADO</h1>
 			</div>
-
-            <div>
-                <button id="btn-iniciar" class="button-71" role="button">INICIAR JUEGO</button>
-            </div>
 		</header>	
-		
+
 		<main>
+			<div class="titulo_iniciar">
+				<div>
+					<button id="btn-iniciar" class="button-71" role="button">INICIAR JUEGO</button>
+				</div>
+			</div>
+
+            
 			<div id="input-text">
 				<button id="btn-agregar" class="button-71" role="button">AGREGAR PALABRA</button>
 				<input type="text" id="agregar-palabra" placeholder="Escriba una nueva palabra">
 			</div>
+			<section class="scoreboard">
+			
+					<h2>TABLA</h2>
+					<p id="puntuacion">PUNTUACIÓN: 0</p>
+					<p id="racha">RACHA: 0</p>
+				
+
+			  </section>
+
 			<div class="pantalla">
-                <canvas width="1200" height="800"></canvas>
+                <canvas width="1200px" height="800px"></canvas>
             </div>
 		</main>
 

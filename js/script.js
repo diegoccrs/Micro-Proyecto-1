@@ -34,7 +34,7 @@ function agregarLetra (arrayLetras, keyName){
 
 function finJuego (cantidadIntentos){
   var fin = false;
-  if (cantidadIntentos == 8){
+  if (cantidadIntentos == 9){
       fin = true;
   }
   return fin;
