@@ -12,6 +12,7 @@ function listaPalabras (basePalabras){
     return basePalabras[cantidadPalabras];
 }
 
+//Declaración de variables
 var basePalabras = ["VIVIR","UNIVERSIDAD","PROYECTO","PAGINA","HOLA","SISTEMAS","INFORMACION"];
 var botonInicioPresionado = false;
 var palabraRandom;
@@ -19,6 +20,7 @@ var arrayLetrasCorrectas = [];
 var arrayLetrasIncorrectas =[];
 var finalJuego;
 
+//Función diseñada para agregar un nuevo elemento keyName a arrayLetras si no está ya presente en el array.
 function agregarLetra (arrayLetras, keyName){
   var repetido = false;
 
@@ -37,6 +39,7 @@ function agregarLetra (arrayLetras, keyName){
   return arrayLetras;
 };
 
+//Función que toma un parámetro cantidadIntentos y devuelve un valor booleano (true o false) indicando si el juego ha terminado o no.
 function finJuego (cantidadIntentos){
   var fin = false;
   if (cantidadIntentos == 9){
@@ -45,6 +48,7 @@ function finJuego (cantidadIntentos){
   return fin;
 }
 
+//Función que determina si el usuario ha ganado un juego basado en una palabra aleatoria y una lista de letras acertadas.
 function ganador (palabraRandom, aciertos){
   var fin = false;
 
@@ -68,6 +72,7 @@ function ganador (palabraRandom, aciertos){
   return fin;
 }
 
+//Función que verifica si un carácter dado cumple con ciertas condiciones.
 function validarCaracter(caracter){
   var valido = false;
   const patron = new RegExp("[A-ZÑ]");
@@ -77,9 +82,10 @@ function validarCaracter(caracter){
   return valido;
 }
 
+//Función verifica si un texto cumple con ciertas condiciones.
 function validarTexto (texto){
-  const patron = new RegExp("[A-ZÑ]$");
-  const espacio = /\s/;
+  const patron = new RegExp("[A-ZÑ]$");  //Este patrón busca que el texto termine con una letra mayúscula (A-Z) o la letra Ñ. El símbolo $ indica que la coincidencia debe ocurrir al final del texto.
+  const espacio = /\s/;  //Este patrón busca espacios en blanco (\s) en el texto.
   var valido = false;
   if (patron.test(texto) && !espacio.test(texto)){
       valido = true;
@@ -113,6 +119,7 @@ document.addEventListener('keydown', function(event){
           drawFinJuego("Fin del Juego!");
           document.getElementById("input-text").style.display = "block";
           document.getElementById("btn-iniciar").textContent = "INICIAR JUEGO";
+          document.getElementById("btn-reiniciar").textContent = "REINICIAR";
           puntuacionNum = 0;
           rachaNum = 0;
 
@@ -136,27 +143,28 @@ document.addEventListener('keydown', function(event){
       
 });
 
+//Función que se encarga de agregar una nueva fila a la tabla HTML.
 function appendRow() {
-    // Get the table body
+    // Obtiene el body de la tabla
     var tbody = document.querySelector(".stats-table table tbody");
   
-    // Create a new row and cells
+    // Crea una nueva fila y celdas
     var row = document.createElement("tr");
     var numberCell = document.createElement("td");
     var scoreCell = document.createElement("td");
     var winStreakCell = document.createElement("td");
   
-    // Set the cell text
+    // Coloca el texto en la celda
     numberCell.textContent = intentoNum;
     scoreCell.textContent = puntuacionNum;
     winStreakCell.textContent = rachaNum;
   
-    // Append the cells to the row
+    // Agrega las celdas a la fila
     row.appendChild(numberCell);
     row.appendChild(scoreCell);
     row.appendChild(winStreakCell);
   
-    // Append the row to the table body
+    // Añade la fila a la tabla
     tbody.appendChild(row);
   }
 
@@ -178,7 +186,10 @@ function definirIntento(){
     console.log(9-arrayLetrasIncorrectas.length);
 }
 
-
+//En resumen, este código maneja la lógica de inicio del juego. Cuando se carga la página, 
+//se muestra un elemento de entrada de texto. Cuando se hace clic en el botón "iniciarJuego", 
+// se oculta el elemento de entrada, se inicializan algunas variables, se selecciona una palabra aleatoria de una lista, se dibujan guiones para representar la palabra, y se establece una variable para indicar que se ha presionado el botón de inicio.
+// se dibujan guiones para representar la palabra, y se establece una variable para indicar que se ha presionado el botón de inicio.
 document.addEventListener("DOMContentLoaded", function () { 
   document.getElementById("input-text").style.display = "block";
 });
@@ -250,13 +261,13 @@ btnAgregar.addEventListener("click", function(evt){
 let btnReiniciar = document.getElementById("btn-reiniciar");
 
 btnReiniciar.addEventListener("click", function() {
-// Get the "btn-iniciar" button
-    let btnIniciar = document.getElementById("btn-iniciar");
+// Obtener boton "btn-reiniciar" 
+    let btnReiniciar = document.getElementById("btn-reiniciar");
 
-    // Set the text of the "btn-iniciar" button
-    btnIniciar.textContent = "INICIAR JUEGO";
+    // Coloca el texto en el boton "btn-reiniciar" 
+    btnReiniciar.textContent = "REINICIAR JUEGO";
     document.getElementById("input-text").style.display = "block";
-    // Set rachaNum and puntuacionNum to 0
+    // Coloca rachaNum y puntuacionNum en 0
     rachaNum = 0;
     puntuacionNum = 0;
 });

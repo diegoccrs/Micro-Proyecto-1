@@ -17,6 +17,7 @@ function drawBase_1(){
   pincel.lineTo(100,450);
   pincel.lineTo(200,450);
   pincel.closePath();          // base 
+  pincel.strokeStyle = "white";
   pincel.stroke();
 }
 
@@ -48,25 +49,25 @@ function drawBase_1(){
 
   function drawPiernaIzq (){
     pincel.moveTo(300,320);      
-    pincel.lineTo(250,400);      // pierna izq  
+    pincel.lineTo(250,400);      // pierna izquierda  
     pincel.stroke();
   }
 
   function drawPiernaDer (){
     pincel.moveTo(300,320);      
-    pincel.lineTo(350,400);      // pierna der  
+    pincel.lineTo(350,400);      // pierna derecha  
     pincel.stroke();
   }
 
   function drawBrazoIzq (){      
     pincel.moveTo(300,260);
-    pincel.lineTo(230,190);      //brazo izq
+    pincel.lineTo(230,190);      //brazo izquierda
     pincel.stroke();
   }
 
-  function drawBrazoDer (){      
+  function drawBrazoDer (){     
     pincel.moveTo(300,260);
-    pincel.lineTo(370,190);      //brazo izq
+    pincel.lineTo(370,190);      //brazo izquierda
     pincel.stroke();
   }
 
@@ -156,6 +157,7 @@ function drawBase_1(){
     }
   }
 
+//Función que coloca un mensaje cuando se acaba una partida
   function drawFinJuego(texto){
 
     pincel.font = "40px Comic Sans MS";
@@ -168,16 +170,14 @@ function drawBase_1(){
     pincel.stroke();
   }
 
+//Función que se encarga de redimensionar el canvas para que se ajuste al contenedor padre y ajuste su tamaño interno.
   function resizeCanvas() {
     var canvas = document.getElementById('id_pantalla');
 
-    // Add an event listener to the window's resize event
     window.addEventListener('resize', resizeCanvas, false);
-    // Make the canvas fill its parent container
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     
-    // Set the internal size to match
     //canvas.width  = canvas.offsetWidth;
     //canvas.height = canvas.offsetHeight;
     }
