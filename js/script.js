@@ -120,25 +120,26 @@ document.addEventListener('keydown', function(event){
           document.getElementById("input-text").style.display = "block";
           document.getElementById("btn-iniciar").textContent = "INICIAR JUEGO";
           document.getElementById("btn-reiniciar").textContent = "REINICIAR";
+          //añadir a la tabla
+          //no cambiar el orden de las siguientes lineas
+          appendRow();
           puntuacionNum = 0;
           rachaNum = 0;
 
-          finalJuego = true;
-
-          //añadir a la tabla
-          appendRow();
+          
           intentoNum++;
+          finalJuego = true;
       }
 
       if (ganador(palabraRandom,arrayLetrasCorrectas) && !finalJuego){
             drawFinJuego("Ganaste, Felicidades");
             document.getElementById("input-text").style.display = "block";
             finalJuego = true;
-
+            iniciarJuego.style.display = "block";
             //racha y puntaje
             definirPuntaje();
             }
-      definirIntento();      
+      definirIntento(9-arrayLetrasIncorrectas.length);      
   }
       
 });
@@ -180,10 +181,10 @@ function definirPuntaje(){
     puntuacion.textContent = "Puntuación: " + puntuacionNum;
 }
 
-function definirIntento(){
+function definirIntento(numero){
     var intento = document.querySelector("#intentos");
-    intento.textContent = "INTENTOS: " + (9-arrayLetrasIncorrectas.length);
-    console.log(9-arrayLetrasIncorrectas.length);
+    intento.textContent = "INTENTOS: " + (numero);
+    //console.log(9-arrayLetrasIncorrectas.length);
 }
 
 //En resumen, este código maneja la lógica de inicio del juego. Cuando se carga la página, 
@@ -201,9 +202,9 @@ iniciarJuego.addEventListener("click", function (evt){
   arrayLetrasCorrectas = [];
   arrayLetrasIncorrectas =[];
   finalJuego = false;
-
-  document.getElementById("input-text").style.display = "none";
   iniciarJuego.textContent = "CONTINUAR";
+  iniciarJuego.style.display = "none";
+  document.getElementById("input-text").style.display = "none";
   palabraRandom = listaPalabras(basePalabras);
   console.log(palabraRandom);
 
@@ -211,6 +212,8 @@ iniciarJuego.addEventListener("click", function (evt){
   botonInicioPresionado = true;
   
   console.log(basePalabras);
+
+  definirIntento(9)
 });
 
 //cada vez que se refresca la pagina se carga en la lista de palabras la ultima ingresada
@@ -263,6 +266,10 @@ let btnReiniciar = document.getElementById("btn-reiniciar");
 btnReiniciar.addEventListener("click", function() {
 // Obtener boton "btn-reiniciar" 
     let btnReiniciar = document.getElementById("btn-reiniciar");
+    var racha = document.querySelector("#racha");
+    var puntuacion = document.querySelector("#puntuacion");
+    iniciarJuego.style.display = "block";
+    iniciarJuego.textContent = "INICIAR JUEGO";
 
     // Coloca el texto en el boton "btn-reiniciar" 
     btnReiniciar.textContent = "REINICIAR JUEGO";
@@ -270,5 +277,13 @@ btnReiniciar.addEventListener("click", function() {
     // Coloca rachaNum y puntuacionNum en 0
     rachaNum = 0;
     puntuacionNum = 0;
+
+    // Coloca rachaNum y puntuacionNum en 0 en la pantalla
+    racha.textContent = "Racha: " + rachaNum;
+    puntuacion.textContent = "Puntuación: " + puntuacionNum;
+
+    //definir intento
+    definirIntento(0);
+
 });
 
