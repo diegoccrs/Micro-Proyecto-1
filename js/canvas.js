@@ -1,18 +1,23 @@
 var pantalla = document.querySelector("canvas");   //Esta línea declara una variable llamada pantalla y le asigna el primer elemento HTML que coincida con el selector CSS "canvas". El elemento canvas en HTML define un área rectangular donde se pueden dibujar gráficos utilizando JavaScript. En resumen, esta línea encuentra el elemento <canvas> en la página web y lo almacena en la variable pantalla.
 var pincel = pantalla.getContext("2d");   /*Esta línea declara otra variable llamada pincel y le asigna el contexto de dibujo 2D del elemento pantalla. El contexto de dibujo proporciona métodos para dibujar formas, líneas, texto y otros elementos gráficos en el lienzo. En resumen, esta línea recupera el contexto de dibujo 2D asociado con el elemento canvas y lo almacena en la variable pincel.*/ 
+ 
 
 pincel.lineWidth = 3;  //lineWidth: Esta es una propiedad del objeto pincel que controla el grosor de las líneas dibujadas con ese pincel.
 
 function drawBase(){
-  pincel.fillStyle = "lightgrey";
+  pincel.fillStyle = "green";
   pincel.fillRect (0,0,1200,800);
 
+}
+
+function drawBase_1(){
   pincel.beginPath();
   pincel.moveTo(150,400);
   pincel.lineWidth = 3;
   pincel.lineTo(100,450);
   pincel.lineTo(200,450);
   pincel.closePath();          // base 
+  pincel.strokeStyle = "white";
   pincel.stroke();
 }
 
@@ -44,25 +49,25 @@ function drawBase(){
 
   function drawPiernaIzq (){
     pincel.moveTo(300,320);      
-    pincel.lineTo(250,400);      // pierna izq  
+    pincel.lineTo(250,400);      // pierna izquierda  
     pincel.stroke();
   }
 
   function drawPiernaDer (){
     pincel.moveTo(300,320);      
-    pincel.lineTo(350,400);      // pierna der  
+    pincel.lineTo(350,400);      // pierna derecha  
     pincel.stroke();
   }
 
   function drawBrazoIzq (){      
     pincel.moveTo(300,260);
-    pincel.lineTo(230,190);      //brazo izq
+    pincel.lineTo(230,190);      //brazo izquierda
     pincel.stroke();
   }
 
-  function drawBrazoDer (){      
+  function drawBrazoDer (){     
     pincel.moveTo(300,260);
-    pincel.lineTo(370,190);      //brazo izq
+    pincel.lineTo(370,190);      //brazo izquierda
     pincel.stroke();
   }
 
@@ -88,7 +93,7 @@ function drawBase(){
   function drawLetraCorrecta(palabraSecreta, letra){
     var separacion = 450;
     pincel.font = "30px Comic Sans MS";
-    pincel.fillStyle = "green";
+    pincel.fillStyle = "white";
 
     for(i=0; i < palabraSecreta.length; i++){
       if (palabraSecreta[i] == letra){
@@ -105,7 +110,9 @@ function drawBase(){
   function drawLetraIncorrecta(arrayLetrasIncorrectas){
     var separacion = 550;
     pincel.font = "25px Comic Sans MS";
-    pincel.fillStyle = "red";
+    pincel.fillStyle = "white";
+
+    
 
     for(g=0; g < arrayLetrasIncorrectas.length; g++){
       pincel.fillText(arrayLetrasIncorrectas[g],separacion,300);
@@ -114,42 +121,74 @@ function drawBase(){
     }
     pincel.stroke();
     
+    
     if (arrayLetrasIncorrectas.length == 1){
-      drawColumna();
+      drawBase_1()
     }
     if (arrayLetrasIncorrectas.length == 2){
-      drawSoga();
+      drawColumna();
     }
     if (arrayLetrasIncorrectas.length == 3){
-      drawCabeza();
+      drawSoga();
     }
     if (arrayLetrasIncorrectas.length == 4){
-      drawTorso();
+      drawCabeza();
     }
     if (arrayLetrasIncorrectas.length == 5){
-      drawPiernaDer();
+      drawTorso();
+      
     }
     if (arrayLetrasIncorrectas.length == 6){
-      drawPiernaIzq();
+      drawPiernaDer();
+      
     }
     if (arrayLetrasIncorrectas.length == 7){
-      drawBrazoDer();
+
+      drawPiernaIzq();
+      
     }
     if (arrayLetrasIncorrectas.length == 8){
+      drawBrazoDer();
+      
+    }
+    if (arrayLetrasIncorrectas.length == 9){
+      
       drawBrazoIzq();
     }
   }
 
+//Función que coloca un mensaje cuando se acaba una partida
   function drawFinJuego(texto){
 
     pincel.font = "40px Comic Sans MS";
     if(texto == "Fin del Juego!"){
       pincel.fillStyle ="red";
     }else{
-      pincel.fillStyle = "green";
+      pincel.fillStyle = "white";
     }
     pincel.fillText(texto,520,150);
     pincel.stroke();
   }
 
+//Función que se encarga de redimensionar el canvas para que se ajuste al contenedor padre y ajuste su tamaño interno.
+  function resizeCanvas() {
+    var canvas = document.getElementById('id_pantalla');
+
+    window.addEventListener('resize', resizeCanvas, false);
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    
+    //canvas.width  = canvas.offsetWidth;
+    //canvas.height = canvas.offsetHeight;
+    }
+
+
+
+
+
+function main(){
   drawBase();
+  resizeCanvas();
+}
+
+main();
