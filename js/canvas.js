@@ -182,7 +182,10 @@ function drawBase_1(){
     //canvas.height = canvas.offsetHeight;
     }
 
-
+let btnReiniciarcanvas = document.getElementById("btn-reiniciar");
+btnReiniciarcanvas.addEventListener("click", function(){
+  drawBase();
+});
 
 
 
